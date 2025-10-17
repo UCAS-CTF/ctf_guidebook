@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF入门指南</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    <link rel="stylesheet" href="./src/css/markdownstyle.css">
+</head>
+<body>
+    <!-- 侧边导航 -->
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>CTF入门指南</h1>
+            <p>本指南主要提供CTF各方向的简介和软件推荐</p>
+            <a class="wikilink" href="https://ucas-ctf.github.io/">回到wiki</a>
+        </div>
+        
+        <div class="nav-section">
+            <ul class="nav-links">
+                <li><a href="#" class="active">编程基础PPC</a></li>
+                <li><a href="#">密码学CRYPTO</a></li>
+                <li><a href="#">网络安全WEB</a></li>
+                <li><a href="#">二进制BINARY</a></li>
+                <li><a href="#">安全杂项MISC</a></li>
+            </ul>
+        </div>
+<!--         
+        <div class="nav-section">
+            <h3><i>🔧</i> 工具与资源</h3>
+            <ul class="nav-links">
+                <li><a href="#">评测工具安装</a></li>
+                <li><a href="#">学习资源</a></li>
+                <li><a href="#">竞赛指南</a></li>
+                <li><a href="#">常见问题</a></li>
+            </ul>
+        </div> -->
+    </aside>
+    
+    <main>
+        <!-- <div class="header">
+            <h2></h2>
+        </div> -->
+        <main id="content-container" class="markdown-body">
+        </main>
+        <div id="toc-wrapper">
+            <nav id="toc-container">
+                <div class="toc-header">
+                    <h3>目录</h3>
+                    </div>
+                <ul id="toc-list"></ul>
+                
+            </nav>
+        </div>
+        <div class="footer">
+            <p>UCAS本科CTF竞赛小组 © 2025 | <a class="wikilink" href="https://ucas-ctf.github.io/">回到wiki</a>
+        </div>
+    </main>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="./src/js/script.js"></script>
+    <script>
+        // 初始化代码高亮
+        hljs.highlightAll();
+        
+        // 切换解决方案显示
+        function toggleSolution(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('open');
+            
+            const button = event.currentTarget;
+            if (element.classList.contains('open')) {
+                button.innerHTML = '<i>👁️</i> 隐藏内容';
+            } else {
+                button.innerHTML = '<i>👁️</i> 显示内容';
+            }
+        }
+        
+        // 模拟动态添加内容
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有active类
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                
+                // 添加active类到当前链接
+                this.classList.add('active');
+                
+                // // 更新标题
+                // document.querySelector('.header h2').textContent = this.textContent;
+            });
+        });
+    </script>
+</body>
+</html>
