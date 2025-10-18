@@ -1,24 +1,29 @@
 :root {
-    --markdown-bg: #e9fcf2;
-    --text-color: #333333;
-    --heading-color: #1a1a1a;
-    --accent-color: #007acc;
-    --border-color: #e0e0e0;
-    --code-bg: #f5f5f5;
-    --blockquote-bg: #f9f9f9;
-    --blockquote-border: #ccc;
+    --markdown-bg: rgba(248, 250, 252, 0.85); /* 与主题卡片背景一致 */
+    --text-color: #2c3e50; /* 与主题深色文字一致 */
+    --heading-color: #1e293b;
+    --accent-color: #5b9bd5; /* 与主题主色调一致 */
+    --border-color: rgba(91, 155, 213, 0.2); /* 与主题边框一致 */
+    --code-bg: rgba(241, 245, 249, 0.9);
+    --blockquote-bg: rgba(245, 248, 250, 0.6);
+    --blockquote-border: var(--accent-color);
+    --secondary-color: #70ad47; /* 次要色 */
+    --success-color: #52c41a; /* 成功色 */
 }
 
 /* --- 主内容区基础样式 --- */
 .markdown-body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-color);
     background-color: var(--markdown-bg);
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 12px;
     max-width: 95vw;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
 }
 
 /* --- 标题排版 --- */
@@ -30,17 +35,30 @@
 .markdown-body h6 {
     margin-top: 24px;
     margin-bottom: 16px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.25;
     color: var(--heading-color);
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.3em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5em;
 }
 
-.markdown-body h1 { font-size: 2.25em; }
-.markdown-body h2 { font-size: 1.75em; }
-.markdown-body h3 { font-size: 1.5em; }
-.markdown-body h4 { font-size: 1.25em; }
+.markdown-body h1 { 
+    font-size: 2.25em; 
+    color: var(--accent-color);
+}
+
+.markdown-body h2 { 
+    font-size: 1.75em;
+    color: var(--accent-color);
+}
+
+.markdown-body h3 { 
+    font-size: 1.5em; 
+}
+
+.markdown-body h4 { 
+    font-size: 1.25em; 
+}
 
 /* --- 段落与链接 --- */
 .markdown-body p {
@@ -51,11 +69,13 @@
 .markdown-body a {
     color: var(--accent-color);
     text-decoration: none;
-    transition: color 0.2s ease-in-out;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 600;
 }
 
 .markdown-body a:hover {
     text-decoration: underline;
+    color: var(--secondary-color);
 }
 
 /* --- 列表 --- */
@@ -65,14 +85,20 @@
     margin-bottom: 16px;
 }
 
+.markdown-body li {
+    margin-bottom: 8px;
+}
+
 /* --- 引用块 --- */
 .markdown-body blockquote {
     margin: 0 0 16px 0;
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-size: 1em;
-    color: #b0b0b0;
-    border-left: 0.25em solid var(--blockquote-border);
+    color: var(--text-color);
+    border-left: 4px solid var(--blockquote-border);
     background-color: var(--blockquote-bg);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
 }
 
 /* --- 代码 --- */
@@ -81,21 +107,25 @@
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 0.875em;
     background-color: var(--code-bg);
-    color: var(--text-color);
-    padding: 0.2em 0.4em;
+    color: var(--accent-color);
+    padding: 0.2em 0.6em;
     border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
 }
 
 /* 代码块 */
 .markdown-body pre {
-    padding: 16px;
+    padding: 20px;
     overflow: auto;
     font-size: 0.9em;
-    line-height: 1.45;
-    background-color: #1c2128; /* 配合 highlight.js github-dark 主题 */
-    border-radius: 6px;
+    line-height: 1.6;
+    background-color: #1e293b; /* 深色背景 */
+    border-radius: 12px;
     margin-bottom: 16px;
     max-width: 70vw;
+    border: 1px solid rgba(91, 155, 213, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .markdown-body pre code {
@@ -103,6 +133,7 @@
     margin: 0;
     background-color: transparent;
     border: 0;
+    color: #e2e8f0;
 }
 
 .markdown-body pre::-webkit-scrollbar {
@@ -111,24 +142,24 @@
 }
 
 .markdown-body pre::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.1);
+    background: rgba(91, 155, 213, 0.1);
     border-radius: 4px;
 }
 
 .markdown-body pre::-webkit-scrollbar-thumb {
-    background: #4a5568;
+    background: var(--accent-color);
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: content-box;
 }
 
 .markdown-body pre::-webkit-scrollbar-thumb:hover {
-    background: #2d3748;
+    background: var(--secondary-color);
 }
 
 .markdown-body pre {
     scrollbar-width: thin;
-    scrollbar-color: #4a5568 rgba(0,0,0,0.1);
+    scrollbar-color: var(--accent-color) rgba(91, 155, 213, 0.1);
 }
 
 /* --- 表格 --- */
@@ -138,6 +169,8 @@
     margin-bottom: 16px;
     display: block;
     overflow: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .markdown-body th,
@@ -147,12 +180,17 @@
 }
 
 .markdown-body th {
-    background-color: var(--code-bg);
-    font-weight: 600;
+    background-color: rgba(91, 155, 213, 0.15);
+    font-weight: 700;
+    color: var(--accent-color);
 }
 
 .markdown-body tr:nth-child(2n) {
     background-color: var(--blockquote-bg);
+}
+
+.markdown-body tr:hover {
+    background-color: rgba(91, 155, 213, 0.08);
 }
 
 /* --- 图片 --- */
@@ -161,10 +199,18 @@
     height: auto;
     display: block;
     margin: 16px auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
 }
 
+/* --- 水平分割线 --- */
+.markdown-body hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+    margin: 24px 0;
+}
 
 /* --- 数学公式 (KaTeX) --- */
 .markdown-body .katex-display {
@@ -173,9 +219,9 @@
     padding: 8px 0;
 }
 .markdown-body .katex {
-    font-size: 1.1em; /* 使公式字体比正文稍大，更清晰 */
+    font-size: 1.1em;
+    color: var(--text-color);
 }
-
 
 /* --- TOC (Table of Contents) 动态目录样式 --- */
 
@@ -185,23 +231,23 @@
     top: 0;
     right: 0;
     height: 100%;
-    width: 280px; /* 容器宽度 = TOC宽度 + 触发区宽度 */
+    width: 280px;
     z-index: 1000;
-    /* 通过 transform 将实际内容区移出屏幕，仅留出一小部分触发区 */
     transform: translateX(260px); 
-    transition: transform 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* 2. TOC 实际内容容器 */
 #toc-container {
-    width: 260px; /* TOC 宽度 */
+    width: 260px;
     height: 100%;
     padding: 20px;
-    padding-top: 80px; /* 留出顶部空间 */
+    padding-top: 80px;
     background-color: var(--markdown-bg);
-    border-left: 1px solid var(--border-color);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    border-left: 2px solid var(--accent-color);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
     overflow-y: auto;
+    backdrop-filter: blur(10px);
 }
 
 /* 3. 核心：当鼠标悬停在外层容器上时，将其移回屏幕内 */
@@ -209,19 +255,40 @@
     transform: translateX(0);
 }
 
+/* TOC 滚动条样式 */
+#toc-container::-webkit-scrollbar {
+    width: 6px;
+}
 
-/* TOC 内部样式 (与之前类似，稍作调整) */
+#toc-container::-webkit-scrollbar-track {
+    background: rgba(91, 155, 213, 0.1);
+    border-radius: 3px;
+}
+
+#toc-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+#toc-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* TOC 内部样式 */
 .toc-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .toc-header h3 {
     margin: 0;
     font-size: 1.2em;
-    color: var(--heading-color);
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 #toc-container ul {
@@ -232,7 +299,8 @@
 
 /* h2 级别的列表项 */
 #toc-container .toc-h2 > a {
-    font-weight: bold;
+    font-weight: 700;
+    color: var(--heading-color);
 }
 
 #toc-container .toc-h2 .toggle-icon {
@@ -240,8 +308,10 @@
     display: inline-block;
     padding: 0 8px;
     font-style: normal;
-    transition: transform 0.2s;
-    user-select: none; /* 防止双击选中文本 */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    user-select: none;
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 #toc-container .toc-h2 .toggle-icon.collapsed {
@@ -258,20 +328,30 @@
     display: none;
 }
 
+#toc-container li {
+    margin: 8px 0;
+}
+
 #toc-container li a {
     display: inline-block;
-    padding: 6px 0;
+    padding: 6px 10px;
     font-size: 0.9em;
     color: var(--text-color);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 6px;
+    font-weight: 600;
 }
 
 #toc-container li a:hover {
     color: var(--accent-color);
+    background-color: rgba(91, 155, 213, 0.1);
+    transform: translateX(5px);
 }
 
 #toc-container li a.active {
-    color: var(--accent-color);
-    font-weight: bold;
+    color: white;
+    background-color: var(--accent-color);
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }

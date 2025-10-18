@@ -1,17 +1,19 @@
 :root {
-    --primary: #34dbac;
-    --secondary: #73b659;
-    --accent: #e74c3c;
-    --light: #ecf0f1;
+    --primary: #5b9bd5; /* 柔和的蓝色 - 主色调，有助于集中注意力 */
+    --secondary: #70ad47; /* 自然绿色 - 次要色，舒缓眼睛 */
+    --accent: #ffc000; /* 温暖黄色 - 强调色 */
+    --light: #f5f7fa;
     --dark: #2c3e50;
-    --success: #2ecc71;
-    --warning: #f39c12;
-    --gray: #95a5a6;
-    --light-gray: #34495e;
+    --success: #52c41a; /* 清新绿 */
+    --warning: #faad14;
+    --gray: #8c9db5;
+    --light-gray: #5a6c7d;
     --border-radius: 12px;
-    --shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     --transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    --border: 2px solid rgba(255, 255, 255, 0.1);
+    --border: 2px solid rgba(91, 155, 213, 0.15);
+    --card-bg: rgba(248, 250, 252, 0.85); /* 柔和的浅灰蓝色卡片背景 */
+    --sidebar-bg: rgba(245, 248, 250, 0.9); /* 侧边栏背景 */
 }
 
 @font-face {
@@ -37,9 +39,9 @@
 }
 
 body {
-    background-color: #caefc9;
-    color: var(--light);
-    line-height: 1.6;
+    background: linear-gradient(135deg, #e3eff5 0%, #d8e8f0 50%, #cee0eb 100%);
+    color: var(--dark);
+    line-height: 1.8;
     display: grid;
     grid-template-columns: 280px 1fr;
     min-height: 100vh;
@@ -53,14 +55,14 @@ body {
     grid-template-columns: 280px 1fr;
     gap: 25px;
 }
-/* 侧边栏样式 - 卡通风格 */
+/* 侧边栏样式 - 更柔和的配色 */
 .sidebar {
-    background: rgb(51, 54, 54);
+    background: var(--sidebar-bg);
     backdrop-filter: blur(10px);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     padding: 25px 0;
-    border: var(--border);
+    border: 1px solid rgba(91, 155, 213, 0.2);
     position: sticky;
     top: 20px;
     height: calc(100vh - 40px);
@@ -71,26 +73,23 @@ body {
     width: 8px;
 }
 .sidebar::-webkit-scrollbar-thumb {
-    background: var(--gray);
+    background: rgba(91, 155, 213, 0.3);
     border-radius: var(--border-radius);
 }
 .sidebar::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
+    background: rgba(91, 155, 213, 0.5);
 }
 .logo {
     padding: 0 20px 20px;
     margin-bottom: 15px;
-    border-bottom: 2px dashed rgba(236, 240, 241, 0.2);
+    border-bottom: 2px solid rgba(91, 155, 213, 0.15);
     text-align: center;
 }
 
 .logo h1 {
     font-size: 2.2rem;
     margin-bottom: 5px;
-    background: var(--primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--primary);
     font-weight: 800;
     letter-spacing: 1px;
 }
@@ -108,7 +107,7 @@ body {
     padding: 0 10px 10px;
     font-size: 0.95rem;
     margin-bottom: 10px;
-    color: var(--gray);
+    color: var(--light-gray);
     display: flex;
     align-items: center;
     letter-spacing: 1px;
@@ -133,7 +132,7 @@ body {
 }
 
 .nav-links li:hover {
-    background: rgba(52, 73, 94, 0.5);
+    background: rgba(91, 155, 213, 0.08);
     transform: translateX(5px);
 }
 
@@ -141,7 +140,7 @@ body {
     display: flex;
     align-items: center;
     padding: 14px 20px;
-    color: var(--light);
+    color: var(--dark);
     text-decoration: none;
     transition: var(--transition);
     font-size: 1.05rem;
@@ -153,7 +152,7 @@ body {
 }
 
 .nav-links a.active {
-    background: rgba(52, 152, 219, 0.2);
+    background: rgba(91, 155, 213, 0.12);
     color: var(--primary);
     border-left: 4px solid var(--primary);
 }
@@ -184,17 +183,13 @@ body {
 }
 
 /* 主内容区样式 */
-.main-content {
-    padding: 0;
-}
-
 .header {
-    background: rgba(26, 30, 46, 0.8);
+    background: var(--card-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     padding: 25px 30px;
     margin-bottom: 30px;
-    border: var(--border);
+    border: 1px solid rgba(91, 155, 213, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -202,7 +197,7 @@ body {
 }
 
 .header h2 {
-    color: var(--light);
+    color: var(--dark);
     font-size: 2rem;
     font-weight: 800;
     display: flex;
@@ -212,7 +207,7 @@ body {
 
 .header h2 i {
     color: var(--primary);
-    background: rgba(52, 152, 219, 0.2);
+    background: rgba(91, 155, 213, 0.15);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -246,20 +241,20 @@ body {
 }
 
 .content-card {
-    background: rgba(26, 30, 46, 0.8);
+    background: var(--card-bg);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     padding: 30px;
     margin-bottom: 30px;
-    border: var(--border);
+    border: 1px solid rgba(91, 155, 213, 0.2);
     backdrop-filter: blur(10px);
 }
 
 .content-card h3 {
-    color: var(--light);
+    color: var(--dark);
     margin-bottom: 25px;
     padding-bottom: 20px;
-    border-bottom: 2px solid rgba(236, 240, 241, 0.1);
+    border-bottom: 2px solid rgba(91, 155, 213, 0.15);
     font-weight: 800;
     font-size: 1.6rem;
     display: flex;
@@ -272,7 +267,7 @@ body {
 }
 
 .exercise {
-    background: rgba(52, 73, 94, 0.4);
+    background: rgba(91, 155, 213, 0.06);
     border-radius: var(--border-radius);
     padding: 25px;
     margin-bottom: 25px;
@@ -287,7 +282,7 @@ body {
 }
 
 .exercise-title h4 {
-    color: var(--light);
+    color: var(--dark);
     font-size: 1.4rem;
     font-weight: 700;
 }
@@ -299,20 +294,20 @@ body {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 700;
-    box-shadow: 0 4px 0 rgba(23, 98, 145, 0.8);
+    box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }
 
 .code-block {
-    background: #1e293b;
-    color: #f8fafc;
+    background: rgba(241, 245, 249, 0.9);
+    color: #2c3e50;
     border-radius: var(--border-radius);
     padding: 20px;
     margin: 20px 0;
     overflow-x: auto;
     font-family: 'Fira Code', monospace;
     font-size: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(91, 155, 213, 0.2);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .code-block pre {
@@ -349,12 +344,12 @@ body {
     transition: var(--transition);
     font-weight: 700;
     margin-top: 15px;
-    box-shadow: 0 4px 0 rgba(23, 98, 145, 0.8);
+    box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }
 
 .toggle-btn:hover {
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 rgba(23, 98, 145, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(91, 155, 213, 0.4);
 }
 
 .toggle-btn i {
@@ -404,13 +399,13 @@ body {
 }
 
 .stat-card {
-    background: rgba(52, 152, 219, 0.15);
+    background: var(--card-bg);
     border-radius: var(--border-radius);
     padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: var(--border);
+    border: 1px solid rgba(91, 155, 213, 0.2);
     box-shadow: var(--shadow);
     transition: var(--transition);
     text-align: center;
@@ -418,16 +413,18 @@ body {
 }
 
 .stat-card:nth-child(2) {
-    background: rgba(155, 89, 182, 0.15);
+    background: rgba(240, 247, 238, 0.85);
+    border-color: rgba(112, 173, 71, 0.2);
 }
 
 .stat-card:nth-child(3) {
-    background: rgba(46, 204, 113, 0.15);
+    background: rgba(240, 252, 242, 0.85);
+    border-color: rgba(82, 196, 26, 0.2);
 }
 
 .stat-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
 .stat-card i {
@@ -447,14 +444,14 @@ body {
 .stat-card h4 {
     font-size: 1.2rem;
     margin-bottom: 12px;
-    color: var(--light);
+    color: var(--dark);
     font-weight: 600;
 }
 
 .stat-card p {
     font-size: 2.2rem;
     font-weight: 800;
-    color: white;
+    color: var(--primary);
 }
 
 .footer {
@@ -487,30 +484,30 @@ body {
     justify-content: center;
     gap: 12px;
     font-size: 1.05rem;
-    box-shadow: 0 5px 0 rgba(23, 98, 145, 0.8);
+    box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }
 
 .controls button:hover {
-    transform: translateY(3px);
-    box-shadow: 0 2px 0 rgba(23, 98, 145, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(91, 155, 213, 0.4);
 }
 
 .controls button:nth-child(2) {
     background: var(--secondary);
-    box-shadow: 0 5px 0 rgba(109, 65, 128, 0.8);
+    box-shadow: 0 2px 8px rgba(112, 173, 71, 0.3);
 }
 
 .controls button:nth-child(2):hover {
-    box-shadow: 0 2px 0 rgba(109, 65, 128, 0.8);
+    box-shadow: 0 4px 12px rgba(112, 173, 71, 0.4);
 }
 
 .controls button:nth-child(3) {
     background: var(--success);
-    box-shadow: 0 5px 0 rgba(33, 145, 81, 0.8);
+    box-shadow: 0 2px 8px rgba(82, 196, 26, 0.3);
 }
 
 .controls button:nth-child(3):hover {
-    box-shadow: 0 2px 0 rgba(33, 145, 81, 0.8);
+    box-shadow: 0 4px 12px rgba(82, 196, 26, 0.4);
 }
 
 @media (max-width: 768px) {
